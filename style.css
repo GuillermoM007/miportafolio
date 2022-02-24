@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Noto+Sans&display=swap');
+
+body{
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0em;
+}
+
+h1,h2,h3,h4,h5{
+	font-family: 'Fjalla One', sans-serif;
+}
+.cover{ /*Para dar estilos a la imagen de portada*/
+    height: 400px;
+    background-image: url("Images/cover.jpg");
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    background-blend-mode: darken;
+    color: white;
+}
+
+.parrCover {/* Parrafo sobre la imagen de portada*/
+    text-align: center;
+}
+
+.cover-small{ /*para darle a la imagen de cada tarjeta el mismo diseno a todas*/
+    height: 150px;
+    background-blend-mode: normal;
+}
+
+.card-title{
+    min-height: 2rem;
+}
+
+.card-text{
+    min-height: 6rem;
+}
+
+.language-stripe, .slider{
+    overflow-x: scroll;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+
+.strip-container, .slider-container{
+    display: flex;
+}
+
+.strip-container .card{
+    width: 200px;
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+}
+
+.responsive-iframe{ /*Este hack hace que el mapa ocupe todo el espacio del contenedor donde se encuentra ya que originalmente el iframe es estatico y no responsive*/
+    position: relative;
+    padding-top: 56.25%; /*Este calculo se extrae de la division 9/16=0.5625, con respecto a la proporcion 16/9 (alto y ancho) que queremos darle al ifram*/
+}
+
+.responsive-iframe iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}/*Aqui termina el hack para hacer responsive el iframe del mapa*/
+
+.slider{
+    overflow-x: hidden;
+    
+}
+
+.slider-container{
+
+    transform: translateX(0); /*esta propiedad servirá para la transicion de imagenes definiendo como punto de partida para el keyframe "slider"*/
+    animation: slider 15s infinite; /*duracion total de la transicion de las 4 imagenes del slider*/
+}
+
+.image-container{
+    width: 100%;
+    padding-top: 56.25%;
+    background-size: cover; /*para redimensionar la imagen correctamente*/
+    background-position: center;
+    flex-shrink: 0; /*propiedad que hace que la imagen no se achique y ocupe el contenedor completo*/
+    
+}
+
+.avatar{
+    height: 11rem;
+    width: 11rem;
+    background-size: cover;
+    background-position: center top; /*para indicar que parte de la imagen quiero que se muestre*/
+    margin: 0 auto; /*para centrar la imagen dentro del div*/
+    display: inline-block;
+}
+
+@keyframes slider { /*lo descrito abajo indica como se distribuye el tiempo entre cada imagen del slider donde 0 a 400% indica la totalidad del tiempo(0-100% es una imagen y 100-200% imagen 2 y así sucesivamente)*/
+    0%{
+        transform: translateX(0);
+    }
+    20%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(-100%);
+    }
+    45%{
+        transform: translateX(-100%);
+    }
+    50%{
+        transform: translateX(-200%);
+    }
+    70%{
+        transform: translateX(-200%);
+    }
+    75%{
+        transform: translateX(-300%);
+    }
+    95%{
+        transform: translateX(-300%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
